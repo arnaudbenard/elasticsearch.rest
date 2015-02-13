@@ -1,12 +1,30 @@
 extends layout
 
 block content
-  h1 elasticsearch.rest
-  p.lead REST-ify your Elasticsearch cluster
+  h1(style="text-align:center;padding-top: 40px;") elasticsearch.
+    span(style="background: rgb(126, 199, 126);padding: 3px 15px;border-radius: 17px;color: white;") rest
+  p(style="text-align:center;padding-bottom: 30px; padding-top: 20px;color:#868686;").lead REST-ify your Elasticsearch cluster
   hr
   .row
     .col-sm-12
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+      h2 Documentation
+      h3 Intro
+      p elasticsearch.rest will transform your Elasticsearch cluster into a JSON API. No need to learn complex Elasticsearch queries, we'll do the heavy lifting for you.
+      h4
+        p Before
+        pre #{JSON.stringify({"index":"production","type":"profiles","fields":["name","logo"],"body":{"query":{"filtered":{"query":{"match_all":{}}}},"sort":[{"updated_at":"desc"}]}}, null, 2)}
+        p After
+        pre http://elasticsearch.rest/app/:id/profiles/?sort=-updated_at&fields=name,logo
+      h3 Queries
+      br
+      each doc in documentation
+        div(class="panel panel-default")
+          div(class="panel-heading")
+            |#{doc.name} (
+            code #{doc.param}
+            |)
+          div(class="panel-body")
+            | #{doc.description}
+            span(style="float:right;")
+              | Example:
+              code #{doc.example}

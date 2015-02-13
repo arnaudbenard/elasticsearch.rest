@@ -12,11 +12,11 @@ block content
   div(class="panel panel-default")
     div(class="panel-heading") Endpoint
     div(class="panel-body")
-      code http://www.elasticsearch.rest/app/#{cluster.apps[0].name}/
+      code #{host}app/#{cluster.apps[0].name}/
 
   h4 Resources
   ul(class="list-group")
     each resource in cluster.apps[0].resources
       li(class="list-group-item") #{resource}
-        code(style="float:right;") http://www.elasticsearch.rest/app/#{cluster.apps[0].name}/#{resource}
+        code(style="float:right;") #{host}app/#{cluster.apps[0].name}/#{resource}
 

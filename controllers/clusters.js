@@ -36,6 +36,7 @@ exports.getShow = function(req, res) {
             title: 'Clusters',
             cluster: obj.cluster,
             indices: obj.indices,
+            host: process.env.PRODUCTION ? 'http://www.elasticsearch.rest/': 'http://localhost:3000/'
         });
     });
 };
@@ -60,7 +61,7 @@ var randomName = function() {
 };
 
 var populateAppNames = function(cluster) {
-    helper.getResources(cluster.url)
+    return helper.getResources(cluster.url)
     .then(function(indices) {
         return indices.map(function(obj) {
             return {
