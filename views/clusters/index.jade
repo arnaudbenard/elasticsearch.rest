@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Your clusters
+  p List of all your avaiable clusters
+
+  each cluster in clusters
+    li
+      | #{cluster.url}
+      a(href="/clusters/#{cluster.id}") View
+
+
