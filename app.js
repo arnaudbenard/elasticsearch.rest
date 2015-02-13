@@ -125,8 +125,8 @@ app.get('/clusters/new', passportConf.isAuthenticated, clustersController.getCre
 app.get('/clusters/:id', passportConf.isAuthenticated, clustersController.getShow);
 // app.put('/clusters/:id', passportConf.isAuthenticated, clustersController.putShow);
 // app.del('/clusters/:id', passportConf.isAuthenticated, clustersController.delShow);
-app.get('/app/:name', jsonApi.getQuery);
-// app.get('/app/:name/:resource', jsonApi.getQuery);
+app.get('/app/:name', jsonApi.getConfig);
+app.get('/app/:name/:type', jsonApi.getQuery);
 
 /**
  * API examples routes.
