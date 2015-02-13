@@ -89,11 +89,11 @@ exports.postIndex = function(req, res) {
         });
     }
 
-    Cluster.findAsync({ url: url})
+    Cluster.findAsync({ user: req.user, url: url})
     .then(function(docs) {
         if (docs.length > 0) {
             res.send(400, {
-                message: 'Url already used by another user'
+                message: 'Url already used.'
             });
         }
         return Cluster.createAsync({
