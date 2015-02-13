@@ -1,5 +1,6 @@
 var Cluster = require('../models/Cluster');
 var Bluebird = require('bluebird');
+var helper = require('../helpers/elasticsearch');
 
 /**
  * GET /clusters
@@ -17,12 +18,19 @@ exports.getIndex = function(req, res) {
 };
 
 exports.getShow = function(req, res) {
-    console.log('req.params', req.params);
     Cluster.findOneAsync({ user: req.user, _id: req.params.id })
     .then(function(doc) {
+        return Bluebird.props({
+            indices: helper.getResources(doc.url),
+            cluster: doc
+        });
+    })
+    .then(function(obj) {
+        console.log(obj);
         res.render('clusters/show', {
             title: 'Clusters',
-            cluster: doc
+            cluster: obj.cluster,
+            indices: obj.indices,
         });
     });
 };
@@ -67,6 +75,8 @@ exports.postIndex = function(req, res) {
         res.redirect('/clusters');
     });
 };
+
+
 
 
 // app.get('/clusters', clustersController.getIndex);

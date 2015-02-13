@@ -4,5 +4,9 @@ block content
   .page-header
     h3 Your clusters
   | Url: #{cluster.url}
-
+  each obj in indices
+    h5 #{obj.index}
+    h5 Resources
+    each resource in obj.resources
+      li= resource
 
