@@ -1,14 +1,20 @@
 // An opinionated styleguide for writing sane, maintainable and scalable Sass.
 // http://sass-guidelin.es
 
-@import "themes/modern/variables";
+@import "themes/flatly/variables";
 
 @import "vendors/bootstrap";
 @import "vendors/bootstrap-social";
 @import "vendors/font-awesome";
 @import "vendors/ionicons";
 
-@import "themes/modern/styles";
+@import "themes/flatly/styles";
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
+
+h1,h2,h3,h4 {
+  font-family: 'Droid Sans Mono', sans-serif;
+}
 
 // Scaffolding
 // -------------------------

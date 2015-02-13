@@ -2,11 +2,21 @@ extends ../layout
 
 block content
   .page-header
-    h3 Your clusters
-  | Url: #{cluster.url}
-  each obj in indices
-    h5 #{obj.index} (#{obj.appName})
-    h5 Resources
-    each resource in obj.resources
-      li= resource
+    h3 Application
+      code(style="font-size: 15px;margin-left: 20px;") #{cluster.apps[0].name}
+
+  div(class="panel panel-default")
+    div(class="panel-heading") Cluster URL
+    div(class="panel-body")
+      code #{cluster.url}
+  div(class="panel panel-default")
+    div(class="panel-heading") Endpoint
+    div(class="panel-body")
+      code http://www.elasticsearch.rest/app/#{cluster.apps[0].name}/
+
+  h4 Resources
+  ul(class="list-group")
+    each resource in cluster.apps[0].resources
+      li(class="list-group-item") #{resource}
+        code(style="float:right;") http://www.elasticsearch.rest/app/#{cluster.apps[0].name}/#{resource}
 

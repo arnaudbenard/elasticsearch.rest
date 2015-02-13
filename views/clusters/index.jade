@@ -4,10 +4,16 @@ block content
   .page-header
     h3 Your clusters
   p List of all your avaiable clusters
-
-  each cluster in clusters
-    li
-      | #{cluster.url}
-      a(href="/clusters/#{cluster.id}") View
-
+  table(class="table table-striped")
+    thead
+      tr
+        td Cluster
+        td Endpoint
+        td View
+    each cluster in clusters
+      tr
+        td= cluster.url
+        td= cluster.apps[0].name
+        td
+          a(href="/clusters/#{cluster.id}") View
 

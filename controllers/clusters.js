@@ -11,6 +11,7 @@ var _ = require('lodash');
 exports.getIndex = function(req, res) {
     Cluster.findAsync({ user: req.user })
     .then(function(docs) {
+        console.log(docs);
         res.render('clusters/index', {
             title: 'Clusters',
             clusters: docs
