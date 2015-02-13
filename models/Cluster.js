@@ -22,7 +22,8 @@ var clusterSchema = new mongoose.Schema({
     },
     token: {
         type: String,
-    }
+    },
+    resources: [String]
   })]
 
 });

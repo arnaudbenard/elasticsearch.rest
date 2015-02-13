@@ -61,11 +61,11 @@ var randomName = function() {
 var populateAppNames = function(cluster) {
     helper.getResources(cluster.url)
     .then(function(indices) {
-        var toPopulate = _.pluck(indices, 'index');
-        return toPopulate.map(function(index) {
+        return indices.map(function(obj) {
             return {
-                index: index,
-                name: randomName()
+                index: obj.index,
+                name: randomName(),
+                resources: obj.resources
             };
         });
     })
