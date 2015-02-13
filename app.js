@@ -30,6 +30,7 @@ var userController = require('./controllers/user');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var clustersController = require('./controllers/clusters');
+var jsonApi = require('./lib/json_api');
 
 /**
  * API keys and Passport configuration.
@@ -124,6 +125,8 @@ app.get('/clusters/new', passportConf.isAuthenticated, clustersController.getCre
 app.get('/clusters/:id', passportConf.isAuthenticated, clustersController.getShow);
 // app.put('/clusters/:id', passportConf.isAuthenticated, clustersController.putShow);
 // app.del('/clusters/:id', passportConf.isAuthenticated, clustersController.delShow);
+app.get('/app/:name', jsonApi.getQuery);
+// app.get('/app/:name/:resource', jsonApi.getQuery);
 
 /**
  * API examples routes.

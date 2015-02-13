@@ -11,8 +11,20 @@ var clusterSchema = new mongoose.Schema({
     required: true
   },
 
+  apps: [new mongoose.Schema({
+    name : {
+        type: String,
+        required: true
+    },
+    index: {
+        type: String,
+        required: true
+    },
+    token: {
+        type: String,
+    }
+  })]
+
 });
-
-
 
 module.exports = mongoose.model('Cluster', clusterSchema);
